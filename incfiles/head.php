@@ -74,7 +74,7 @@ Logo diễn đàn - Trần Văn Hoài - Star
 -----------------------------------------------------------------
 */
 
-echo '<center><a href="' . $set['homeurl'] . '" title="' . $set['copyright'] . '"><img src="' . $set['homeurl'] . '/images/logo.gif" alt="' . $set['copyright'] . '" style="max-width:100%"/></a></center>';
+echo '<center><a href="' . $set['homeurl'] . '" title="' . $set['copyright'] . '"><img src="' . $set['homeurl'] . '/theme/Star/images/logo.png" alt="' . $set['copyright'] . '" style="max-width:50%;margin: auto;"/></a></center>';
 
 /*
 -----------------------------------------------------------------

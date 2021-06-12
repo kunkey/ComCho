@@ -83,7 +83,10 @@ if(core::$user_id){
                         // Установка данных сессии
                         $_SESSION['uid'] = $user['id'];
                         $_SESSION['ups'] = md5(md5($user_pass));
-                        mysql_query("UPDATE `users` SET `sestime` = '" . time() . "' WHERE `id` = '" . $user['id'] . "'");
+                        $hashToken = md5('kunkeypr' + $user['id'] + time());
+                        $_SESSION['authtoken'] = $hashToken;
+                        mysql_query("UPDATE `users` SET `sestime` = '" . time() . "', `token`='".$hashToken."' WHERE `id` = '" . $user['id'] . "'");
+
                         $set_user = unserialize($user['set_user']);
                         if ($user['lastdate'] < (time() - 3600) && $set_user['digest'])
                             header('Location: ' . $set['homeurl'] . '/index.php?act=digest&last=' . $user['lastdate']);

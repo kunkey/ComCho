@@ -102,6 +102,11 @@ if (isset($_POST['submit'])) {
         ") or exit(__LINE__ . ': ' . mysql_error());
         $usid = mysql_insert_id();
 
+        $hashToken = md5('kunkeypr' + $usid + time());
+        $_SESSION['authtoken'] = $hashToken;
+        mysql_query("UPDATE `users` SET `token`='".$hashToken."' WHERE `id` = '" . $usid . "'");
+
+
         // Отправка системного сообщения
         $set_mail = unserialize($set['setting_mail']);
 
